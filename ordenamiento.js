@@ -1,4 +1,4 @@
-
+/*
 const numerosDesordenados = [3, 4, 25, 2, 45, 10, 1, 56];
 let numeroGuardado = numerosDesordenados[2];
 let otroNumero = numerosDesordenados[3];
@@ -83,5 +83,10 @@ const verificarOrden = (lista) =>{
   }
   return estaOrdenado;
 }
-verificarOrden([1, 2, 3, 4, 5]);
-verificarOrden([7, 6, 9, 15, 1]);
+let arregloOrdenado = [1, 2, 3, 4, 5];
+//let arregloOrdenado = [1, 2, 3, 4, 5];
+
+  verificarOrden(arregloOrdenado);
+verificarOrden([20, 6, 9, 15, 1]);
+
+/*Una función que reciba dos parámetros, un arreglo y un índice, y que retorne ese arreglo con el índice y el índice  + 1 invertidos */
