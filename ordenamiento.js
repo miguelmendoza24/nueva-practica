@@ -86,7 +86,7 @@ const verificarOrden = (lista) =>{
 let arregloOrdenado = [1, 2, 3, 4, 5];
 //let arregloOrdenado = [1, 2, 3, 4, 5];
 
-  verificarOrden(arregloOrdenado);
 verificarOrden([20, 6, 9, 15, 1]);
+verificarOrden(arregloOrdenado);
 
 /*Una función que reciba dos parámetros, un arreglo y un índice, y que retorne ese arreglo con el índice y el índice  + 1 invertidos */
