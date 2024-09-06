@@ -86,7 +86,38 @@ const verificarOrden = (lista) =>{
 let arregloOrdenado = [1, 2, 3, 4, 5];
 //let arregloOrdenado = [1, 2, 3, 4, 5];
 
-verificarOrden([20, 6, 9, 15, 1]);
 verificarOrden(arregloOrdenado);
+verificarOrden([20, 6, 9, 15, 1]);
 
 /*Una función que reciba dos parámetros, un arreglo y un índice, y que retorne ese arreglo con el índice y el índice  + 1 invertidos */
+
+function invertirIndice(lista, indice) {
+  let primerIndice = lista[indice]
+  let siguienteIndice = lista[indice + 1]
+  lista[indice] = siguienteIndice
+  lista[indice + 1] = primerIndice
+  return lista
+}
+console.log(invertirIndice([6, 7, 5, 9], 1));
+
+
+function  encontrarDesorden(lista) {
+  for (let index = 0; index < lista.length; index++) {
+    const desorden = lista[index] > lista[index + 1];
+  if (desorden) {
+    return index;
+  }
+  }
+}
+console.log(encontrarDesorden([6, 7, 5, 9]));
+
+function ordenarBubblesort(lista) {
+  let estaOrdenado = verificarOrden(lista);
+  while (!estaOrdenado) {
+    const numeroMaldito = encontrarDesorden(lista); 
+    lista = invertirIndice(lista, numeroMaldito);
+    estaOrdenado = verificarOrden(lista);
+  }
+  return lista;
+}
+console.log(ordenarBubblesort([3, 4, 25, 2, 45, 10, 1, 56]));
