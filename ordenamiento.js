@@ -66,7 +66,7 @@ verificarOrden([7,6,9,15,1])
 
 verificarOrden ([1,2,3,4,5])
 //Se espera un true*/
- 
+
 const verificarOrden = (lista) =>{
   let estaOrdenado = true;
   for (let index = 0; index < (lista.length -1); index++) {
@@ -120,4 +120,9 @@ function ordenarBubblesort(lista) {
   }
   return lista;
 }
-console.log(ordenarBubblesort([3, 4, 25, 2, 45, 10, 1, 56]));
+console.log(
+  ordenarBubblesort([
+    16, 99, 27, 84, 30, 77, 39, 61, 48, 53, 91, 100, 10, 23, 35, 77, 89, 98, 51,
+    73, 89, 66, 34, 57, 12, 45, 27, 92, 58, 61,
+  ])
+);
