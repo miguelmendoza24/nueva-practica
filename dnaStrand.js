@@ -18,7 +18,7 @@ function dnaStrand(dna) {
   
   return nuevoDna;
 }
-console.log(dnaStrand());
+console.log(dnaStrand("GTAT"));
 
 
 
