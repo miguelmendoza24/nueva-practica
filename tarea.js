@@ -1,5 +1,5 @@
 
-console.log("hola, " + "mundo!");
+/*console.log("hola, " + "mundo!");
 
 let nombre = "juan";
 console.log("hola, " + nombre);
@@ -29,12 +29,38 @@ console.log(saludo + " " +  nombre + " " + "mucho gusto");
 
 let numero = 5;
 console.log("El numero es: " + numero.toString());
-
+*/
  //Revisar qué es ecmascript
 
 
 
+var nombre = "Juana";
+var apellido = "Perales";
+var edad = 28;
+
+console.log(`Pasado el tiempo,  ${nombre}  ${apellido} va a tener ${edad}`);
 
 
+function saludo(nombre, edad) {
+  return `Hola me llamo ${nombre} y tengo ${edad} año.`;
+}
+console.log(saludo("macaco", 25));
 
 
+function arearRectangulo(longitud, ancho) {
+  return `El area del rectangulo es 
+  ${longitud * ancho} unidades cuadradas.`;
+}
+console.log(arearRectangulo(5,10));
+
+
+function estadoCuenta(nombre, saldo) {
+  return `Estimado ${nombre}, su saldo actual es de $${saldo} pesos.`;
+}
+console.log(estadoCuenta("agapito", 5200.25));
+
+
+function numeroMayor(a, b) {
+  return `Entre ${a} y ${b}, el mayor numero mayor es ${a > b ? a : b}, `;  
+}
+console.log(numeroMayor(25,15));
