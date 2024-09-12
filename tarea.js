@@ -63,4 +63,5 @@ console.log(estadoCuenta("agapito", 5200.25));
 function numeroMayor(a, b) {
   return `Entre ${a} y ${b}, el mayor numero mayor es ${a > b ? a : b}, `;  
 }
-console.log(numeroMayor(25,15));
+console.log(numeroMayor(25, 15));
+
