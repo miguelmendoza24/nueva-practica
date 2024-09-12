@@ -15,12 +15,14 @@
 
 //https://meet.google.com/pri-bkso-upn*/
 
-function recorrerAlrevez(arr) {
+function binaryArrayToNumbe(arr) {
   const ultimoIndice = arr.length - 1;
+  let resultado = 0;
   for (let index = ultimoIndice; index >= 0; index--) {
-    console.log(2**(ultimoIndice - index));
-    console.log("---------");
+    if (arr[index] == 1) {
+      resultado += 2 ** (ultimoIndice - index);
+    }
   }
+  return resultado;
 }
-console.log(recorrerAlrevez([1, 1, 1, 1]));
 
