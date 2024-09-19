@@ -11,3 +11,4 @@ function squareSum(numbers) {
   return suma;
 }
 console.log(squareSum([1,2,2]))
+//Your order, please
