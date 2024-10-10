@@ -178,9 +178,9 @@ permite insertar, eliminar o reemplazar elementos en un arreglo en base a un ín
 
 que parametros recibe?
 El método splice recibe hasta tres parámetros:
-índiceInicio: El índice donde comenzará la modificación del arreglo.
-cantidadEliminar: El número de elementos a eliminar a partir del índiceInicio. Si es 0, no se eliminan elementos.
-elementosAInsertar: Los elementos que deseas agregar al arreglo a partir del índiceInicio. Pueden ser uno o más valores.
+índic inicio: El índice donde comenzará la modificación del arreglo.
+cantidad eliminar: El número de elementos a eliminar a partir del índiceInicio. Si es 0, no se eliminan elementos.
+elementos a insertar: Los elementos que deseas agregar al arreglo a partir del índice inicio. Pueden ser uno o más valores.
 
 que paramentros recibe su callback?
 no utiliza un callback
@@ -190,9 +190,9 @@ que retorna su callback?
 no utiliza un callback
 
 como funciona?
-Se selecciona el índiceInicio en el arreglo, a partir del cual se realizarán las modificaciones.
-Si se especifica cantidadEliminar, se eliminan esa cantidad de elementos comenzando desde el índiceInicio.
-Si se proporcionan elementos adicionales (argumentos después de cantidadEliminar), estos se insertan en la posición del índiceInicio, reemplazando los elementos eliminados (si es que se eliminaron).
+Se selecciona el índice inicio en el arreglo, a partir del cual se realizarán las modificaciones.
+Si se especifica cantidad eliminar, se eliminan esa cantidad de elementos comenzando desde el índice inicio.
+Si se proporcionan elementos adicionales (argumentos después de cantidad eliminar), estos se insertan en la posición del índice inicio, reemplazando los elementos eliminados (si es que se eliminaron).
 El arreglo original se modifica directamente, y splice devuelve un nuevo arreglo con los elementos eliminados, si los hubo.
 */
 
@@ -208,7 +208,7 @@ organiza los elementos de un arreglo en un orden determinado. De forma predeterm
 
 que parametros recibe?
 recibe un parámetro opcional:
-funciónDeComparación: Una función callback que define cómo deben compararse los elementos del arreglo para ordenarlos.
+función de comparación: Una función callback que define cómo deben compararse los elementos del arreglo para ordenarlos.
 
 que paramentros recibe su callback?
 La función de comparación recibe dos parámetros:
@@ -218,7 +218,6 @@ que retorna?
 retorna el arreglo modificado, es decir, el arreglo original, pero ahora ordenado según la función de comparación (o según el orden por defecto si no se proporciona una función de comparación).
 
 que retorna su callback?
-La función de callback (función de comparación) retorna:
 Un número negativo si el primer argumento (a) debe ir antes del segundo (b).
 Cero si no hay cambio en el orden entre a y b.
 Un número positivo si el segundo argumento (b) debe ir antes que el primero (a).
@@ -226,7 +225,7 @@ Un número positivo si el segundo argumento (b) debe ir antes que el primero (a)
 como funciona?
 Si no se proporciona una función de comparación, sort convierte cada elemento a cadena de texto y los ordena según el valor Unicode.
 Si se proporciona una función de comparación, se usa esta función para determinar el orden de los elementos.
-sort ordena el arreglo in situ, lo que significa que el arreglo original se modifica.
+sort ordena el arreglo, lo que significa que el arreglo original se modifica.
 Se comparan dos elementos a la vez utilizando la función de comparación (si está presente). Dependiendo del valor devuelto por la función, sort decide el orden entre esos dos elementos.
 */
 
@@ -235,7 +234,14 @@ numerrios.sort();
 console.log(numerrios);
 
 const numellos = [5,3,8,6,7,9,1,6];
-numellos.sort((a, b) => a - b);
+numellos.sort((a, b) => {
+  console.log(a);
+  console.log(b);
+  console.log("----------");
+  
+  
+  return a - b
+});
 console.log(numellos);
 
 
@@ -246,12 +252,11 @@ verifica si al menos un elemento del arreglo cumple con una condición definida 
 que parametros recibe?
 recibe dos parámetros:
 
-funciónDePrueba: Una función callback que se ejecuta para cada elemento del arreglo.
+función de prueba: Una función callback que se ejecuta para cada elemento del arreglo.
 thisArg: Un valor opcional que puede usarse como this dentro de la función de prueba.
 
 que paramentros recibe su callback?
 La función de prueba (callback) que se pasa a some recibe tres parámetros:
-
 elemento: El elemento actual que está siendo procesado en el arreglo.
 índice: El índice del elemento actual en el arreglo.
 arreglo: El arreglo sobre el que se llama el método some.
@@ -288,8 +293,8 @@ verifica si un arreglo o cadena contiene un valor determinado. Retorna true si e
 que parametros recibe?
 recibe dos parámetros:
 
-valorBuscado: El valor que se desea buscar en el arreglo o cadena.
-índiceInicio: El índice desde el cual comenzar la búsqueda. Si no se proporciona, la búsqueda empieza en el índice 0. Puede ser un número negativo, en cuyo caso el conteo empieza desde el final del arreglo.
+valor buscado: El valor que se desea buscar en el arreglo o cadena.
+índice inicio: El índice desde el cual comenzar la búsqueda. Si no se proporciona, la búsqueda empieza en el índice 0. Puede ser un número negativo, en cuyo caso el conteo empieza desde el final del arreglo.
 
 que paramentros recibe su callback?
 no utiliza un callback
@@ -297,8 +302,8 @@ no utiliza un callback
 que retorna?
 retorna un booleano:
 
-true si el valorBuscado está presente en el arreglo o cadena.
-false si el valorBuscado no se encuentra.
+true si el valor buscado está presente en el arreglo o cadena.
+false si el valor buscado no se encuentra.
 
 que retorna su callback?
  no utiliza un callback
