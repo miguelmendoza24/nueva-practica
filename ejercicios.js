@@ -11,48 +11,27 @@ Por ejemplo:
 
 */
 function separarHorasMinutos(cadena) {
-  let partes = cadena.split(":");
-  let horas = parseInt(partes[0], 10);
-  let minutos = partes[1];
+  const partes = cadena.match(/^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/);
+  const horas = partes[1];
+  const minutos = partes[2];
   return [horas, minutos];
 }
-console.log(separarHorasMinutos("14:30"));
 
 function determinarPMAM(horas) {
-  if (horas === 0) {
-    return "AM";
-  } else if (horas === 12) {
-    return "PM";
-  } else {
-    if (horas >= 12) {
-      return "PM";
-    } else {
-      return "AM";
-    }
-  }
+  return horas >= 12 ? "PM" : "AM";
 }
-console.log(determinarPMAM(12));
-console.log(determinarPMAM(0));
-console.log(determinarPMAM(1));
 
 function convertirHoras(horas) {
-  if (horas === 0) {
-    return 12;
-  } else if (horas > 12) {
-    return horas - 12;
-  } else {
-    return horas;
-  }
+  return horas === 0 ? 12 : horas > 12 ? horas - 12 : horas;
 }
-console.log(convertirHoras(24));
-console.log(convertirHoras(12));
-console.log(convertirHoras(14));
 
 function convertirReloj(cadena) {
   let [horas, minutos] = separarHorasMinutos(cadena);
-  let tiempo = determinarPMAM(horas);
-  let formato = convertirHoras(horas);
-  return formato + ":" + minutos + " " + tiempo;
+  horas = parseInt(horas, 10);
+  const tiempo = determinarPMAM(horas);
+  horas = convertirHoras(horas);
+  const horasFormateada = horas.toString().padStart(2, "0");
+  return `${horasFormateada}:${minutos} ${tiempo}`;
 }
 console.log(convertirReloj("14:30"));
 
@@ -60,7 +39,7 @@ console.log(convertirReloj("09:45"));
 console.log(convertirReloj("00:00"));
 console.log(convertirReloj("12:00"));
 
-/*
+/* 
 Ejercicio 2: Validador de Formato de Correo Electrónico (con Regex)
 Descripción del problema
 
@@ -73,54 +52,45 @@ Ejemplos:
 - `validarCorreo("usuario@dominio.com")` debe devolver `true`.
 - `validarCorreo("usuario@dominio")` debe devolver `false`.
 - `validarCorreo("user@123.com")` debe devolver `false`.
+*/
 
+function validarAntesDelArroba(cadena) {
+  const regex = /^[a-zA-Z0-9]+(?=@)+/g;
+  const resultado = cadena.match(regex);
+  return resultado ? true : false;
+}
+console.log(validarAntesDelArroba("migueleva@gmail.com"));
 
+function verificarDominio(cadena) {
+  const regex = /(?<=@)[a-zA-Z]+/g;
+  const resultado = cadena.match(regex);  
+  return resultado !== null;
+}
+console.log(verificarDominio("migueleva@gmail.com"));
 
+function validarTLD(cadena) {
+  const regex = /\.(com|net|mx|gob|edu)$/g;
+  const resultado = cadena.match(regex);
+  return !!resultado;
+}
+console.log(validarTLD("migueleva@gmail.com"));
 
+function validaCorreo(correo) {
+  if (correo.indexOf("@") === -1) {
+    return false;
+  }
+  return (
+    validarAntesDelArroba(correo) &&
+    verificarDominio(correo) &&
+    validarTLD(correo)
+  );
+}
+console.log(validaCorreo("Migueleva@gmail.com"));
+console.log(validaCorreo("usuario@dominio.com"));
+console.log(validaCorreo("usuario@dominio"));
+console.log(validaCorreo("user@123.com"));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
 Ejercicio 3: Formateador de Texto Capitalizado
 Descripción del problema:
 
@@ -130,3 +100,30 @@ Por ejemplo:
 - `formatearTexto("   hola   MUNDO   ")` debe devolver `"Hola Mundo"`.
 - `formatearTexto("ESTO   es UN   EJEMPLO")` debe devolver `"Esto   Es Un   Ejemplo"`.
 */
+
+function dividirCadena(cadena) {
+  return cadena.match(/\S+|\s+/g) || [];
+}
+console.log(dividirCadena("soy   bojito el     hermoso"));
+
+function CapitalizarPalabra(palabra) {
+  return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+}
+console.log(CapitalizarPalabra("miguel"));
+
+function formatearTexto(cadena) {
+  if (cadena.length === 0) return "";
+  const palabras = dividirCadena(cadena);
+  const resultado = palabras.map((parte) => {
+    if (/\S/.test(parte)) {
+      return CapitalizarPalabra(parte);
+    }
+    return parte;
+  });
+  return resultado.join("");
+}
+console.log(formatearTexto("ESTO   es UN   EJEMPLO"));
+console.log(formatearTexto(""));
+console.log(
+  formatearTexto("palabaras    palbras      PALABRAS   FEAS MAS MA AM  ")
+);
